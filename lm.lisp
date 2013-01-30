@@ -2,11 +2,6 @@
 
 ;; Language Model
 
-(defvar *language-model-pathname*
-  (merge-pathnames (pathname "data/lm_sc.t3g.arpa")
-		   (asdf:system-definition-pathname
-		    (asdf:find-system :cl-chinese-segment))))
-
 (assert (probe-file *language-model-pathname*))
 
 (defun parse-lm(line model-name)
