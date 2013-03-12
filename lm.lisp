@@ -31,8 +31,9 @@
 	 for line = (read-line in nil)
 	 for line-num = 0 then (incf line-num)
 	 while line do
-	   (if (= (mod line-num 10000) 0)
-	       (format t "."))
+	   (when (= (mod line-num 10000) 0)
+	     (format t ".")
+	     (force-output))
 	   (multiple-value-bind (new-model-name words probability) (parse-lm line model-name)
 	     (cond ((null model-name) (when (eql new-model-name model-type)
 				   (setf model-name new-model-name)))
